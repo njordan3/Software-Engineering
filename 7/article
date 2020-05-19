@@ -1,0 +1,71 @@
+Although the word optimization shares the same root as optimal, it is rare for
+the process of optimization to produce a truly optimal system. The optimized
+system will typically only be optimal in one application or for one audience.
+One might reduce the amount of time that a program takes to perform some task
+at the price of making it consume more memory. In an application where memory
+space is at a premium, one might deliberately choose a slower algorithm in
+order to use less memory. Often there is no one-size-fits-all design which
+works well in all cases, so engineers make trade-offs to optimize the
+attributes of greatest interest. Additionally, the effort required to make a
+piece of software completely optimal incapable of any further improvement is
+almost always more than is reasonable for the benefits that would be accrued,
+so the process of optimization may be halted before a completely optimal
+solution has been reached. Fortunately, it is often the case that the greatest
+improvements come early in the process. Levels of optimization
+
+Optimization can occur at a number of levels. Typically the higher levels have
+greater impact, and are harder to change later on in a project, requiring
+significant changes or a complete rewrite if they need to be changed. Thus
+optimization can typically proceed via refinement from higher to lower, with
+initial gains being larger and achieved with less work, and later gains being
+smaller and requiring more work. However, in some cases overall performance
+depends on performance of very low-level portions of a program, and small
+changes at a late stage or early consideration of lower-level details can have
+outsized impact. Typically some consideration is given to efficiency throughout
+a project, though this varies significantly, but major optimization is often
+considered a refinement to be done late, if ever. On longer-running projects
+there are typically cycles of optimization, where improving one area reveals
+limitations in another, and these are typically curtailed when performance is
+acceptable or gains become too small or costly.
+
+As performance is part of the specification of a program a program that is
+unusably slow is not fit for purpose: a video game with sixty Hertz
+frames-per-second is acceptable, but six fps is unacceptably
+choppy, performance is a consideration from the start, to ensure that the
+system is able to deliver sufficient performance,
+and early prototypes need to have
+roughly acceptable performance for there to be confidence that the final system
+will, with optimization, achieve acceptable performance. This is sometimes
+omitted in the belief that optimization can always be done later, resulting in
+prototype systems that are far too slow, often by an order of magnitude or
+more, and systems that ultimately are failures because they architecturally
+cannot achieve their performance goals, such as the Intel-432 nineteen eighty one, or ones
+that take years of work to achieve acceptable performance, such as Java nineteen ninety five,
+which only achieved acceptable performance with HotSpot 1999. The degree to
+which performance changes between prototype and production system, and how
+amenable it is to optimization, can be a significant source of uncertainty and
+risk.
+
+Given an overall design, a good choice of efficient algorithms and data
+structures, and efficient implementation of these algorithms and data
+structures comes next. After design, the choice of algorithms and data
+structures affects efficiency more than any other aspect of the program.
+Generally data structures are more difficult to change than algorithms, as a
+data structure assumption and its performance assumptions are used throughout
+the program, though this can be minimized by the use of abstract data types in
+function definitions, and keeping the concrete data structure definitions
+restricted to a few places.
+
+For algorithms, this primarily consists of ensuring that algorithms are
+constant time, logarithmic time, linear Big-O, or in some cases log-linear
+Big-O in the input, both in space and time. Algorithms with quadratic
+complexity such as n-squared fail to scale, and even linear algorithms cause
+problems if repeatedly called, and are typically replaced with constant or
+logarithmic if possible.
+
+Beyond asymptotic order of growth, the constant factors matter: an
+asymptotically slower algorithm may be faster or smaller, because simpler, than
+an asymptotically faster algorithm when they are both faced with small input,
+which may be the case that occurs in reality. Often a hybrid algorithm will
+provide the best performance, due to this tradeoff changing with size.
+ 
